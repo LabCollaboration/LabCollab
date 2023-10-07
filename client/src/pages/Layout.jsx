@@ -2,16 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignInAndLoginBtn from "../Components/LayoutComp/SignInAndLoginBtn";
 import ModalForm from "../Components/Login/ModalForm";
+import ModalMyProjects from "../Components/MyProjects/ModalMyProjects";
 
 export default function Layout() {
   const [user, setUser] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [showMyProjects, setShowMyProjects] = useState(false);
 
   const avatarImageRef = useRef(null);
   const accountInfoRef = useRef(null);
 
   let avatarToggle = true;
   const navigate = useNavigate();
+
+  const handleMyRestaurants = () => {
+    // setSideMenuSmallScreen(false);
+    // console.log(isLoggedIn)
+    // if (isLoggedIn) {
+      setShowMyProjects(true);
+    // } else setModalShow(true);
+  };
 
   const avatarEvent = () => {
     let avatarPositonLeft = avatarImageRef.current.getBoundingClientRect().left;
@@ -147,7 +157,7 @@ export default function Layout() {
               <div className="hidden w-full lg:flex flex-wrap justify-end items-center space-y-6 p-6 rounded-xl md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
                 <div className="text-tc2 lg:pr-4 flex ">
                   <button
-                    // onClick={handleMyRestaurants}
+                    onClick={handleMyRestaurants}
                     className="block md:px-4 transition hover:text-hc1 mb-0 space-y-6 tracking-wide font-medium text-sm md:space-y-0 hover:bg-gray-900  hover:bg-opacity-70 p-3 rounded-2xl"
                   >
                     My Projects
@@ -165,15 +175,12 @@ export default function Layout() {
           </div>
         </nav>
       </div>
-      <ModalForm
-        show={showModal}
-        onHide={() => setShowModal(false)}
-      />
+      <ModalForm show={showModal} onHide={() => setShowModal(false)} />
 
-      {/* <ModalMyRestaurants
-        show={showMyRestaurants}
-        onHide={() => setShowMyRestaurants(false)}
-      /> */}
+      <ModalMyProjects
+        show={showMyProjects}
+        onHide={() => setShowMyProjects(false)}
+      />
     </>
   );
 }

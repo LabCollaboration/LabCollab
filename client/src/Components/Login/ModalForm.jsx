@@ -1,22 +1,13 @@
 
 import React from "react";
-// import {Modal} from "react-bootstrap";
-// import LoginForm from "./LoginForm";
-// import {
-//   TERipple,
-//   TEModal,
-//   TEModalDialog,
-//   TEModalContent,
-//   TEModalHeader,
-//   TEModalBody,
-//   TEModalFooter,
-// } from "tw-elements-react";
+import {Modal} from "react-bootstrap";
+import LoginForm from "./LoginForm";
 
 export default function ModalForm({ show, onHide }) {
 
   return (
     <>
-      {/* <Modal
+      <Modal
         show={show}
         onHide={onHide}
         aria-labelledby="contained-modal-title-vcenter"
@@ -43,7 +34,7 @@ export default function ModalForm({ show, onHide }) {
 
         </Modal.Body>
 
-      </Modal> */}
+      </Modal>
     </>
   )
 }

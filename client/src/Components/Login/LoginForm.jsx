@@ -290,7 +290,7 @@ function LoginForm() {
               name="firstName"
               ref={firstNameRef}
               onChange={onChangeInput}
-              onInput={checking.name}
+              // onInput={checking.name}
               required
               style={{ color: "white" }}
               // validation = "Plsease provide an "
@@ -305,7 +305,7 @@ function LoginForm() {
               name="lastName"
               ref={lastNameRef}
               onChange={onChangeInput}
-              onInput={checking.name}
+              // onInput={checking.name}
               required
               style={{ color: "white" }}
               // validation = "Plsease provide an "
@@ -320,7 +320,7 @@ function LoginForm() {
               ref={emailRef}
               name="email"
               onChange={onChangeInput}
-              onInput={checking.email}
+              // onInput={checking.email}
               required
               style={{ color: "white" }}
               // validation = "Plsease provide an "
@@ -335,7 +335,7 @@ function LoginForm() {
               name="password"
               ref={passwordRef}
               onChange={onChangeInput}
-              onInput={checking.password}
+              // onInput={checking.password}
               required
               style={{ color: "white" }}
               // validation = "Plsease provide an "
