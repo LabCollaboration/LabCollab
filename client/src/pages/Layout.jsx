@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignInAndLoginBtn from "../Components/LayoutComp/SignInAndLoginBtn";
 
-
 export default function Layout() {
+  const [user, setUser] = useState();
+  const [modalShow, setModalShow] = useState(false);
 
-  const [user, setUser] = useState({});
   const avatarImageRef = useRef(null);
   const accountInfoRef = useRef(null);
 
@@ -111,8 +111,8 @@ export default function Layout() {
                   className="flex items-center hover:bg-gray-900 p-2 rounded-xl"
                 >
                   <img
-                    className="w-60"
-                    src="../../images/logo1.jpg"
+                    className="w-10"
+                    src="../../images/logo2.png"
                     draggable="false"
                   />
                 </div>
@@ -153,7 +153,11 @@ export default function Layout() {
                   </button>
                 </div>
                 <div className="w-full space-y-2 border-yellow-200 lg:space-y-0 md:w-max lg:border-l">
-                  {user ? <AvatarIcon /> : <SignInAndLoginBtn setModalShow={setModalShow} />}
+                  {user ? (
+                    <AvatarIcon />
+                  ) : (
+                    <SignInAndLoginBtn setModalShow={setModalShow} />
+                  )}
                 </div>
               </div>
             </div>
