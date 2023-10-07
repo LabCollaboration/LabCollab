@@ -6,7 +6,7 @@ export default function ProductCard({ project }) {
 
   return (
     <div className="z-10 max-w-sm bg-tc1 px-6 pt-8 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
-      <h3 className="mb-3 text-xl font-bold text-tc2">{project.project_name? project.project_name:"project NAME"}</h3>
+      <h3 className="mb-3 text-xl h-20 font-bold text-tc2">{project.project_name? project.project_name:"project NAME"}</h3>
       <div className="relative h-48 overflow-hidden">
         <img
           className="w-full rounded-xl"
@@ -18,7 +18,7 @@ export default function ProductCard({ project }) {
           alt="Colors"
         />
       </div>
-      <p className="mt-4 text-gray-200 text-lg font-bold cursor-pointer max-h-20 h-20 overflow-y-scroll custom-scrollbar">
+      <p className="mt-4 text-gray-200 text-lg font-bold cursor-pointer max-h-60 h-60 overflow-y-scroll overflow-x-hidden custom-scrollbar">
         {project.project_description}
       </p>
       <div className="my-4">

@@ -111,7 +111,7 @@ export default function Layout() {
                   className="flex items-center hover:bg-gray-900 p-2 rounded-xl"
                 >
                   <img
-                    className="w-10"
+                    className="w-40"
                     src="../../images/logo2.png"
                     draggable="false"
                   />

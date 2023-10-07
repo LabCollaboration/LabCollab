@@ -13,7 +13,7 @@ export default function ExploreHead() {
             <form action={"true"} className="w-full mt-12">
               <div className="relative flex p-1 rounded-full  bg-gray-900 shadow-md md:p-2">
                 <input
-                  placeholder="Search for a restaurant"
+                  placeholder="Search for a project"
                   className="w-full p-4 rounded-full bg-gray-900 borber border-0 focus:border-none focus:ring-0 placeholder-gray-200 text-gray-200"
                   type="text"
                 />
@@ -37,6 +37,16 @@ export default function ExploreHead() {
               </div>
             </form>
           </div>
+          <div className="ml-auto lg:-mb-50 lg:w-6/12">
+              <img
+                src="/images/solar-system-animation.svg"
+                className="relative w-80"
+                alt="food illustration"
+                loading="lazy"
+                width={3500}
+                height={32500}
+              />
+            </div>
         </div>
       </div>
     </div>
