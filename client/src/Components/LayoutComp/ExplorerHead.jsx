@@ -7,7 +7,7 @@ export default function ExploreHead() {
       <div className="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
         <div className="flex items-center flex-wrap px-2 md:px-0">
           <div className="relative lg:w-6/12 lg:py-24 xl:py-32">
-            <h1 className="font-bold text-4xl text-tc2 md:text-5xl lg:w-10/12">
+            <h1 className="font-bold text-4xl  hover:text-hc1 text-tc2 md:text-5xl lg:w-10/12">
               Find the projects of the future
             </h1>
             <form action={"true"} className="w-full mt-12">
@@ -20,7 +20,7 @@ export default function ExploreHead() {
                 <button
                   type="button"
                   title="Start buying"
-                  className="ml-auto py-3 px-6 rounded-full text-center transition bg-gradient-to-b from-tc2 md:px-12"
+                  className="ml-auto py-3 px-6 hover:from-hc1 rounded-full text-center transition bg-gradient-to-b from-tc2 md:px-12"
                 >
                   <span className="hidden text-black font-semibold md:block">
                     Search
@@ -37,16 +37,13 @@ export default function ExploreHead() {
               </div>
             </form>
           </div>
-          <div className="ml-auto lg:-mb-50 lg:w-6/12">
-              <img
-                src="/images/solar-system-animation.svg"
-                className="relative w-80"
-                alt="food illustration"
-                loading="lazy"
-                width={3500}
-                height={32500}
-              />
-            </div>
+          <div className=" ">
+            <img
+              src="/images/nasa2.gif"
+              className="relative w-full"
+              alt="food illustration"
+            />
+          </div>
         </div>
       </div>
     </div>

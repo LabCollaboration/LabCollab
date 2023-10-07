@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SignInAndLoginBtn from "../Components/LayoutComp/SignInAndLoginBtn";
+import ModalForm from "../Components/Login/ModalForm";
 
 export default function Layout() {
   const [user, setUser] = useState();
-  const [modalShow, setModalShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const avatarImageRef = useRef(null);
   const accountInfoRef = useRef(null);
@@ -138,7 +139,7 @@ export default function Layout() {
                 className="flex items-center group hover:bg-gray-900 p-2 rounded-xl hidden lg:flex"
               >
                 <i className="fas fa-compass text-tc2 text-lg mr-2 transition-transform transform rotate-0 group-hover:rotate-180 group-hover:text-xl"></i>
-                <button className="text-tc2 text-xl font-bold group-hover:text-tc2_2">
+                <button className="text-tc2 text-xl font-bold  hover:text-hc1">
                   Explore
                 </button>
               </div>
@@ -156,7 +157,7 @@ export default function Layout() {
                   {user ? (
                     <AvatarIcon />
                   ) : (
-                    <SignInAndLoginBtn setModalShow={setModalShow} />
+                    <SignInAndLoginBtn setModalShow={setShowModal} />
                   )}
                 </div>
               </div>
@@ -164,6 +165,15 @@ export default function Layout() {
           </div>
         </nav>
       </div>
+      <ModalForm
+        show={showModal}
+        onHide={() => setShowModal(false)}
+      />
+
+      {/* <ModalMyRestaurants
+        show={showMyRestaurants}
+        onHide={() => setShowMyRestaurants(false)}
+      /> */}
     </>
   );
 }

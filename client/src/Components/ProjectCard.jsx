@@ -6,7 +6,7 @@ export default function ProductCard({ project }) {
 
   return (
     <div className="z-10 max-w-sm bg-tc1 px-6 pt-8 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
-      <h3 className="mb-3 text-xl h-20 font-bold text-tc2">{project.project_name? project.project_name:"project NAME"}</h3>
+      <h3 className="mb-3 text-xl h-20 hover:text-hc1 font-bold text-tc2">{project.project_name? project.project_name:"project NAME"}</h3>
       <div className="relative h-48 overflow-hidden">
         <img
           className="w-full rounded-xl"
@@ -86,7 +86,7 @@ export default function ProductCard({ project }) {
         <button
           id={project.id}
           onClick={() => navigate(`/explore/project/${project.id}`)}
-          className="mt-4 text-xl w-full text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br font-bold py-2 rounded-xl "
+          className="mt-4 text-xl w-full text-black bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br font-bold py-2 rounded-xl "
         >
           Show more
           {/* shadow-[0_5px_10px_rgba(246,_194,_61,_0.7)] */}
