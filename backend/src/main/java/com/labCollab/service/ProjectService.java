@@ -7,6 +7,8 @@ import com.labCollab.repository.ProjectRepository;
 import com.labCollab.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
@@ -64,8 +66,9 @@ public class ProjectService {
 //        projectRepository.save(project);
     }
 
-    public List<Project> getProjects() {
-        return projectRepository.findAll();
+    public List<Project> getProjects(int pageNr) {
+        Pageable pageable = PageRequest.of(pageNr, 3);
+        return projectRepository.findAll1(pageable);
     }
 
     private Set<Filter> updateFilters(ProjectDAO projectDAO) {

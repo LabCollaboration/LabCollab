@@ -27,7 +27,7 @@ export default function ExploreHead({ setFilterString }) {
   };
 
   return (
-    <div className="relative bg-tc1">
+    <div className="relative bg-slate-900">
       {/* <img className="z-0 fixed inset-0 w-full h-full object-cover blur-sm" src="public/images/pexels-lumn-604969.jpg"/> */}
       <div className="container px-6 md:px-12 lg:pt-[4.8rem] lg:px-7">
         <div className="flex items-center flex-wrap px-2 md:px-0">
@@ -77,12 +77,12 @@ export default function ExploreHead({ setFilterString }) {
             <h3>Filter By:</h3>
           </div>
           <div
-            className="px-2 flex  gap-[0.5rem] flex-wrap max-w-md max-h-2"
+            className="px-2 py-2 flex  gap-[0.5rem] flex-wrap max-w-md max-h-2"
             // onClick={() => setTagsModal(true)}
           >
             {tags?.map((tag, index) => (
               <div
-                className="tag-item bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:p-2 transition-all"
+                className="tag-item bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:p-2 transition-all"
                 key={index}
               >
                 <span className="text"># {tag}</span>

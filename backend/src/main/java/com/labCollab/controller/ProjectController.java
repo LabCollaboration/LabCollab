@@ -15,10 +15,10 @@ import java.util.List;
 public class ProjectController {
     private final ProjectService projectService;
 
-    @GetMapping("/all")
+    @GetMapping("/all/{pageNr}")
     @CrossOrigin("*")
-    public ResponseEntity<List<Project>> getAll() {
-        return ResponseEntity.ok(projectService.getProjects());
+    public ResponseEntity<List<Project>> getAll(@PathVariable int pageNr) {
+        return ResponseEntity.ok(projectService.getProjects(pageNr));
     }
 
     @PostMapping("/add")

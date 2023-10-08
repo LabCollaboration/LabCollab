@@ -113,11 +113,11 @@ export default function Layout() {
   return (
     <>
       <div className="relative w-full ">
-        <nav className="z-10 bg-tc3 w-full  ">
+        <nav className="z-10 bg-gray-800 w-full  ">
           <div className="container m-auto px-2 md:px-12 lg:px-7">
             <div className="flex flex-wrap items-center justify-between py-3 gap-6 md:py-4 md:gap-0">
               <div className="w-full px-6 flex justify-between items-center lg:w-max md:px-0">
-                <div
+                {/* <div
                   onClick={() => navigate("/")}
                   className="flex items-center hover:bg-gray-900 p-2 rounded-xl"
                 >
@@ -126,7 +126,7 @@ export default function Layout() {
                     src="../../images/logo2.png"
                     draggable="false"
                   />
-                </div>
+                </div> */}
 
                 {/* <ThreeLinesMenu handleEvent={threeLinesMenuEvent} /> */}
 
