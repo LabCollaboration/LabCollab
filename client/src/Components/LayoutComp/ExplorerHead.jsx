@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
-export default function ExploreHead() {
+export default function ExploreHead({ setFilterString }) {
+  const [tags, setTags] = useState([
+    "chimie",
+    "fizica",
+    "motiune",
+    "spatiu",
+    "rachete",
+    "resurse minerale",
+    "hidrogen",
+    "oxigen",
+    "weather",
+    "tornado",
+    "snow",
+    "ice",
+    "storm",
+    "invazion",
+    "electicity",
+    "AI",
+  ]);
+  const searchImputRef = useRef(null);
+
+  const handleSearch = () => {
+    console.log(searchImputRef.current.value);
+    setFilterString(searchImputRef.current.value);
+  };
+
   return (
     <div className="relative bg-tc1">
       {/* <img className="z-0 fixed inset-0 w-full h-full object-cover blur-sm" src="public/images/pexels-lumn-604969.jpg"/> */}
-      <div className="container m-auto px-6 pt-32 md:px-12 lg:pt-[4.8rem] lg:px-7">
+      <div className="container px-6 md:px-12 lg:pt-[4.8rem] lg:px-7">
         <div className="flex items-center flex-wrap px-2 md:px-0">
-          <div className="relative lg:w-6/12 lg:py-24 xl:py-32">
+          <div className="relative lg:w-6/12 lg:py-24 xl:py-20">
             <h1 className="font-bold text-4xl  hover:text-hc1 text-tc2 md:text-5xl lg:w-10/12">
               Find the projects of the future
             </h1>
             <form action={"true"} className="w-full mt-12">
               <div className="relative flex p-1 rounded-full  bg-gray-900 shadow-md md:p-2">
                 <input
+                  ref={searchImputRef}
                   placeholder="Search for a project"
                   className="w-full p-4 rounded-full bg-gray-900 borber border-0 focus:border-none focus:ring-0 placeholder-gray-200 text-gray-200"
                   type="text"
@@ -21,13 +47,14 @@ export default function ExploreHead() {
                   type="button"
                   title="Start buying"
                   className="ml-auto py-3 px-6 hover:from-hc1 rounded-full text-center transition bg-gradient-to-b from-tc2 md:px-12"
+                  onClick={handleSearch}
                 >
                   <span className="hidden text-black font-semibold md:block">
                     Search
                   </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 mx-auto text-yellow-900 md:hidden"
+                    className="w-5 text-yellow-900 md:hidden"
                     fill="currentColor"
                     viewBox="0 0 16 16"
                   >
@@ -43,6 +70,24 @@ export default function ExploreHead() {
               className="relative w-full"
               alt="food illustration"
             />
+          </div>
+        </div>
+        <div className="flex ">
+          <div>
+            <h3>Filter By:</h3>
+          </div>
+          <div
+            className="px-2 flex  gap-[0.5rem] flex-wrap max-w-md max-h-2"
+            // onClick={() => setTagsModal(true)}
+          >
+            {tags?.map((tag, index) => (
+              <div
+                className="tag-item bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:p-2 transition-all"
+                key={index}
+              >
+                <span className="text"># {tag}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

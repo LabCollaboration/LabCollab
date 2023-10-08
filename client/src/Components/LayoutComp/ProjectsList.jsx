@@ -8,7 +8,7 @@ import Loading from "../Loading";
 
 const QUANTITY = 6;
 
-export default function ProjectsList() {
+export default function ProjectsList({ filterString }) {
   const [projects, setProjects] = useState([]);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -36,7 +36,6 @@ export default function ProjectsList() {
   //       setProjects(data["_project"]);
   //     });
   // }, []);
-
   return (
     <div className=" z-10 min-h-screen bg-gray-700 flex justify-center items-center py-20">
       <InfiniteScroll
@@ -47,9 +46,13 @@ export default function ProjectsList() {
         // loader={<Loading />}
         endMessage={<p>No more data to load.</p>}
       >
-        {projects.map((project, index) => (
-          <ProductCard key={index} project={project} />
-        ))}
+        {projects.map((project, index) =>
+          project.project_name.includes(filterString) ? (
+            <ProductCard key={index} project={project} />
+          ) : (
+            <></>
+          )
+        )}
       </InfiniteScroll>
     </div>
   );
