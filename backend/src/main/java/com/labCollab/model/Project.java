@@ -1,6 +1,8 @@
 package com.labCollab.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,40 +20,46 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="projects")
+@Table(name = "projects")
 public class Project {
     @Id
     @GeneratedValue
     private Long id;
 
     private String project_name;
+    @Column(length = 1000)
     private String project_url_on_catalog;
+    @Column(length = 1000)
     private String project_url_external;
     @Column(length = 3000)
     private String project_description;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "projects", fetch = FetchType.LAZY)
-    private Set<Filter> filters;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<ProjectFilter> projectFilters;
 
+    @Column(length = 1000)
     private String fields_of_science;
+    @Column(length = 1000)
     private String project_status;
+    @Column(length = 1000)
     private String agency_sponsor;
+    @Column(length = 1000)
     private String agency_sponsor_other;
+    @Column(length = 1000)
     private String geographic_scope;
+    @Column(length = 1000)
     private String participant_age;
+    @Column(length = 1000)
     private String project_goals;
+    @Column(length = 1000)
     private String participation_tasks;
+    @Column(length = 1000)
     private String scistarter;
     private String email;
     private String start_date;
 
-
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = User.class)
-    @JoinTable(name = "users_projects",
-            joinColumns = @JoinColumn(name = "users_id"),
-            inverseJoinColumns = @JoinColumn(name = "projects_id"),
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"users_id", "projects_id"})})
-    @Fetch(FetchMode.JOIN)
-    private Set<User> users;
+    @JsonBackReference
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserProject> userProjects;
 }

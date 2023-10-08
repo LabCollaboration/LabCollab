@@ -1,6 +1,7 @@
 package com.labCollab.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,13 +36,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private Set<Project> projectSet;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserProject> userProjects;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "userSet", fetch = FetchType.LAZY)
-    private Set<Filter> filterSet;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserFilter> userFilters;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,6 @@
 package com.labCollab.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="filters")
+@Table(name = "filters")
 public class Filter {
     @Id
     @GeneratedValue
@@ -26,19 +27,11 @@ public class Filter {
 
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Project.class)
-    @JoinTable(name = "filters_projects",
-            joinColumns = @JoinColumn(name = "filters_id"),
-            inverseJoinColumns = @JoinColumn(name = "projects_id"),
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"filters_id", "projects_id"})})
-//    @Fetch(FetchMode.JOIN)
-    private Set<Project> projects;
+    @JsonBackReference
+    @OneToMany(mappedBy = "filter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<ProjectFilter> projectFilters;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = User.class)
-    @JoinTable(name = "filters_users",
-            joinColumns = @JoinColumn(name = "filters_id"),
-            inverseJoinColumns = @JoinColumn(name = "users_id"),
-            uniqueConstraints = {@UniqueConstraint(columnNames = {"filters_id", "users_id"})})
-    @Fetch(FetchMode.JOIN)
-    private Set<User> userSet;
+    @JsonBackReference
+    @OneToMany(mappedBy = "filter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserFilter> userFilters;
 }

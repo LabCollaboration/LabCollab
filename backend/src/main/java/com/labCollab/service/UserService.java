@@ -16,11 +16,11 @@ public class UserService {
     private final ProjectRepository projectRepository;
 
     public void addUser(User user) {
-        for(Project project: user.getProjectSet()){
-            Project newProject = projectRepository.findById(project.getId()).orElse(null);
-            assert newProject != null;
-            projectRepository.save(newProject);
-        }
+//        for(Project project: user.getProjectSet()){
+//            Project newProject = projectRepository.findById(project.getId()).orElse(null);
+//            assert newProject != null;
+//            projectRepository.save(newProject);
+//        }
         userRepository.save(user);
     }
 

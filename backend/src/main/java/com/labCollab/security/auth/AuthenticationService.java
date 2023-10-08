@@ -25,7 +25,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .birthdate(request.getBirthdate())
-                .projectSet(request.getProjectSet())
+//                .projectSet(request.getProjectSet())
                 .role(Role.USER)
                 .build();
         userRepository.save(user);

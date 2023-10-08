@@ -1,10 +1,8 @@
 package com.labCollab.service;
 
-import com.labCollab.model.Filter;
-import com.labCollab.model.Project;
-import com.labCollab.model.ProjectDAO;
-import com.labCollab.model.User;
+import com.labCollab.model.*;
 import com.labCollab.repository.FilterRepository;
+import com.labCollab.repository.ProjectFilterRepository;
 import com.labCollab.repository.ProjectRepository;
 import com.labCollab.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -22,6 +20,7 @@ public class ProjectService {
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
     private final FilterRepository filterRepository;
+    private final ProjectFilterRepository projectFilterRepository;
 
     @Transactional
     @Modifying
@@ -45,19 +44,24 @@ public class ProjectService {
                     .email(projectDAO.getEmail())
                     .start_date(projectDAO.getStart_date())
                     .build();
-
-            project.setFilters(filters);
             projectRepository.save(project);
-            projectRepository.flush();
+            System.out.println(project.getId());
+            for (Filter filter : filters) {
+                projectFilterRepository.save(ProjectFilter.builder()
+                        .filter(filter).project(project)
+                        .build());
+            }
+//            project.setFilters(filters);
+//            projectRepository.flush();
         }
     }
 
     public void addProject(Project project) {
-        for (User user : project.getUsers()) {
-            User newUser = userRepository.findById(user.getId()).orElse(null);
-            project.getUsers().add(newUser);
-        }
-        projectRepository.save(project);
+//        for (User user : project.getUsers()) {
+//            User newUser = userRepository.findById(user.getId()).orElse(null);
+//            project.getUsers().add(newUser);
+//        }
+//        projectRepository.save(project);
     }
 
     public List<Project> getProjects() {
@@ -74,6 +78,8 @@ public class ProjectService {
                         .build();
                 filterRepository.save(newFilter);
                 filterList.add(newFilter);
+            } else {
+                filterList.add(foundFilter);
             }
         }
         return filterList;
